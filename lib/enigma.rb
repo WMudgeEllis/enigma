@@ -28,7 +28,7 @@ def random_generator
 end
 
 def date_generator
-
+  Date.today.strftime("%d%m%y")
 end
 
 

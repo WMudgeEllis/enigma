@@ -25,11 +25,14 @@ RSpec.describe Enigma do
   end
 
   xit 'can generate random numbers' do
+    enigma = Enigma.new
 
   end
 
-  xit "can generate today's date" do
-    expect(date_generator).to eq("050821")
+  it "can generate today's date" do
+    enigma = Enigma.new
+
+    expect(enigma.date_generator).to eq("050821")
   end
 
 
