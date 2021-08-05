@@ -24,9 +24,11 @@ RSpec.describe Enigma do
       })
   end
 
-  xit 'can generate random numbers' do
+  it 'can generate random numbers' do
     enigma = Enigma.new
 
+    expect(enigma.random_generator.length).to eq(5)
+    expect(enigma.random_generator).to be_a(String)
   end
 
   it "can generate today's date" do
