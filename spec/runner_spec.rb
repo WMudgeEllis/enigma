@@ -16,19 +16,26 @@ RSpec.describe Runner do
     expect(runner2.date).to eq("040895")
   end
 
+  it 'can write files' do
+    runner2 = Runner.new('data/encrypted.txt', 'data/decrypted', "02715", "040895")
+
+    runner1.write('hello world')
+
+    expect(File.open('data/decrypted', 'r').read).to eq('hello world')
+  end
+
   it 'can read files' do
     runner1 = Runner.new('data/message.txt', 'data/encrypted.txt')
     runner2 = Runner.new('data/encrypted.txt', 'data/decrypted', "02715", "040895")
 
     expect(runner1.read_file).to eq('hello world')
     expect(runner2.read_file).to eq('keder ohulw')
-
   end
 
   xit 'can encrypt' do
     runner = Runner.new('data/message.txt', 'data/encrypted.txt')
 
-    expect(runner.encrypt("hello world").to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
+    expect(runner.encrypt("hello world")).to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
   end
 end
 
