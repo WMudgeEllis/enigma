@@ -11,7 +11,6 @@ class Shift
     @shifts.each do |sym, shift|
       @shifts[sym] += process_key(sym).to_i
       @shifts[sym] += process_offset(sym)
-      # require "pry"; binding.pry
     end
   end
 

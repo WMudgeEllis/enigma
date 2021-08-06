@@ -7,13 +7,13 @@ class Character
 
   def encrypt(letter, shift)
     return letter if !@set.include?(letter)
-    #may want to include % somewhere
+    #may want to include % 27 somewhere
     make_first(letter).rotate(shift).first
   end
 
   def decrypt(letter, shift)
     return letter if !@set.include?(letter)
-    #may want to include % somewhere
+    #may want to include % 27 somewhere
     make_first(letter).rotate(shift * -1).first
   end
 
