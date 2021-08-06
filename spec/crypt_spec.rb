@@ -32,7 +32,7 @@ RSpec.describe Crypt do
       ])
   end
 
-  xit 'can encrypt' do
+  it 'can encrypt' do
     crypt = Crypt.new("hello world", "02715", "040895")
 
      expect(crypt.encrypt).to eq("keder ohulw")

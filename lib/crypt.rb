@@ -30,4 +30,14 @@ class Crypt
     end
     processed_letters
   end
+
+  def encrypt
+    encrypted_array = []
+    attach_shift_nums.each do |letter_shift_pair|
+      encrypted_array << @character.encrypt(letter_shift_pair.keys.first, letter_shift_pair.values.first)
+    end
+    encrypted_array.join
+  end
+
+
 end
