@@ -19,6 +19,8 @@ RSpec.describe Character do
     expect(character.encrypt('z', 0)).to eq('z')
     expect(character.encrypt('a', 35)).to eq('i')
     expect(character.encrypt(' ', 27)).to eq(' ')
+    expect(character.encrypt('?', 23)).to eq('?')
+
   end
 
   it 'can rotate to index position' do
@@ -35,6 +37,7 @@ RSpec.describe Character do
     expect(character.decrypt('z', 0)).to eq('z')
     expect(character.decrypt('a', 35)).to eq('t')
     expect(character.decrypt(' ', 27)).to eq(' ')
+    expect(character.decrypt('?', 23)).to eq('?')
   end
 
 end
