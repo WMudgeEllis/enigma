@@ -17,13 +17,13 @@ class Crypt
     pre_process.each do |letter|
 
       if count % 4 == 0
-        processed_letters << {letter => @shifts[:a]}
+        processed_letters << {letter.downcase => @shifts[:a]}
       elsif count == 1 || ((count - 1) % 4 == 0 )
-        processed_letters << {letter => @shifts[:b]}
+        processed_letters << {letter.downcase => @shifts[:b]}
       elsif count == 2 || ((count - 2) % 4 == 0 )
-        processed_letters << {letter => @shifts[:c]}
+        processed_letters << {letter.downcase => @shifts[:c]}
       elsif count == 3 || ((count - 3) % 4 == 0 )
-        processed_letters << {letter => @shifts[:d]}
+        processed_letters << {letter.downcase => @shifts[:d]}
       end
 
       count += 1
@@ -34,10 +34,36 @@ class Crypt
   def encrypt
     encrypted_array = []
     attach_shift_nums.each do |letter_shift_pair|
+      #too long, maybe fix by changing into an array?
       encrypted_array << @character.encrypt(letter_shift_pair.keys.first, letter_shift_pair.values.first)
     end
     encrypted_array.join
   end
+
+  def decrypt
+    decrypted_array = []
+    attach_shift_nums.each do |letter_shift_pair|
+      decrypted_array << @character.decrypt(letter_shift_pair.keys.first, letter_shift_pair.values.first)
+    end
+    decrypted_array.join
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 end

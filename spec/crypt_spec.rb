@@ -38,4 +38,10 @@ RSpec.describe Crypt do
      expect(crypt.encrypt).to eq("keder ohulw")
   end
 
+  it 'can decrypt' do
+    crypt = Crypt.new("keder ohulw", "02715", "040895")
+
+    expect(crypt.decrypt).to eq("hello world")
+  end
+
 end
