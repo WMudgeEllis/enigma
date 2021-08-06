@@ -34,7 +34,7 @@ RSpec.describe Enigma do
   it "can generate today's date" do
     enigma = Enigma.new
 
-    expect(enigma.date_generator).to eq("050821")
+    expect(enigma.date_generator).to eq("060821")
   end
 
   it "can function without all arguments" do

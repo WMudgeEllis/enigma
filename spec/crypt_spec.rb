@@ -14,10 +14,10 @@ RSpec.describe Crypt do
     expect(crypt.pre_process).to eq(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'])
   end
 
-  it 'attaches shifts to letters' do
+  it 'attaches shift keys to letters' do
     crypt = Crypt.new("hello world", "02715", "040895")
 
-    expect(crypt.process).to eq([
+    expect(crypt.attach_shift_keys).to eq([
       {a: 'h'},
       {b: 'e'},
       {c: 'l'},
@@ -28,7 +28,7 @@ RSpec.describe Crypt do
       {d: 'o'},
       {a: 'r'},
       {b: 'l'},
-      {d: 'd'}
+      {c: 'd'}
       ])
   end
 
