@@ -12,8 +12,15 @@ class Runner
   end
 
   def read_file
-    contents = File.open(read_file_location, 'r').read
-    contents[0..-2]
+    file = File.open(read_file_location, 'r')
+    contents = file.read
+    file.close
+    #may cause issues maybe change to a delete?
+    contents
+  end
+
+  def write(enigma_result)
+    File.open(write_file_location, 'w') { |file| file.write(enigma_result) }
   end
 
 end
