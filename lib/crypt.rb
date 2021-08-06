@@ -32,20 +32,15 @@ class Crypt
   end
 
   def encrypt
-    encrypted_array = []
-    attach_shift_nums.each do |letter_shift_pair|
-      #too long, maybe fix by changing into an array?
-      encrypted_array << @character.encrypt(letter_shift_pair[0], letter_shift_pair[1])
-    end
-    encrypted_array.join
+    attach_shift_nums.map do |letter_shift_pair|
+      @character.encrypt(letter_shift_pair[0], letter_shift_pair[1])
+    end.join
   end
 
   def decrypt
-    decrypted_array = []
-    attach_shift_nums.each do |letter_shift_pair|
-      decrypted_array << @character.decrypt(letter_shift_pair[0], letter_shift_pair[1])
-    end
-    decrypted_array.join
+    attach_shift_nums.map do |letter_shift_pair|
+      @character.decrypt(letter_shift_pair[0], letter_shift_pair[1])
+    end.join
   end
 
 
