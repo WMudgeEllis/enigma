@@ -18,30 +18,38 @@ RSpec.describe Crypt do
     crypt = Crypt.new("hello world", "02715", "040895")
 
     expect(crypt.attach_shift_nums).to eq([
-      {'h' => 3},
-      {'e' => 27},
-      {'l' => 73},
-      {'l' => 20},
-      {'o' => 3},
-      {' ' => 27},
-      {'w' => 73},
-      {'o' => 20},
-      {'r' => 3},
-      {'l' => 27},
-      {'d' => 73}
+      ['h', 3],
+      ['e', 27],
+      ['l', 73],
+      ['l', 20],
+      ['o', 3],
+      [' ', 27],
+      ['w', 73],
+      ['o', 20],
+      ['r', 3],
+      ['l', 27],
+      ['d', 73]
       ])
   end
 
   it 'can encrypt' do
-    crypt = Crypt.new("hello world", "02715", "040895")
+    crypt1 = Crypt.new("hello world", "02715", "040895")
+    crypt2 = Crypt.new("hello world!", "02715", "040895")
 
-     expect(crypt.encrypt).to eq("keder ohulw")
+
+     expect(crypt1.encrypt).to eq("keder ohulw")
+     expect(crypt2.encrypt).to eq("keder ohulw!")
+
   end
 
   it 'can decrypt' do
-    crypt = Crypt.new("keder ohulw", "02715", "040895")
+    crypt1 = Crypt.new("keder ohulw", "02715", "040895")
+    crypt2 = Crypt.new("keder ohulw!", "02715", "040895")
 
-    expect(crypt.decrypt).to eq("hello world")
+
+    expect(crypt1.decrypt).to eq("hello world")
+    expect(crypt2.decrypt).to eq("hello world!")
+
   end
 
 end
