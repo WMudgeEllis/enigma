@@ -41,9 +41,15 @@ RSpec.describe Runner do
   end
 
   xit 'can encrypt' do
+    File.open('data/message.txt', 'w') { |file| file.write('hello world') }
+
     runner = Runner.new('data/message.txt', 'data/encrypted.txt')
 
-    expect(runner.encrypt("hello world")).to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
+    expect(runner.encrypt).to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
+    expect(File.open('data/encrypted.txt', 'r').read).to eq('encrypted')
+
+    File.open('data/message.txt', 'w') { |file| file.write('') }
+    File.open('data/encrypted.txt', 'w') { |file| file.write('') }
   end
 end
 

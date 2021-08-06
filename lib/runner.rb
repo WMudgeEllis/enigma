@@ -12,7 +12,7 @@ class Runner
   end
 
   def read_file
-    file = File.open(read_file_location, 'r')
+    file = File.open(@read_file_location, 'r')
     contents = file.read
     file.close
     #may cause issues maybe change to a delete?
@@ -20,7 +20,13 @@ class Runner
   end
 
   def write(enigma_result)
-    File.open(write_file_location, 'w') { |file| file.write(enigma_result) }
+    File.open(@write_file_location, 'w') { |file| file.write(enigma_result) }
   end
 
+  def encrypt
+    encrypt_info = Enigma.new.encrypt(read_file)
+    write(encrypt_info[:encryption])
+
+    "Created #{write_file_location} with the key #{encrypt_info[:key]} and date #{encrypt_info[:date]}"
+  end
 end
