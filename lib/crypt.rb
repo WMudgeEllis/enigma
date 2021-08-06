@@ -11,19 +11,19 @@ class Crypt
     @data_string.split('')
   end
 
-  def attach_shift_keys
+  def attach_shift_nums
     processed_letters = []
     count = 0
     pre_process.each do |letter|
 
       if count % 4 == 0
-        processed_letters << {a: letter}
+        processed_letters << {letter => @shifts[:a]}
       elsif count == 1 || ((count - 1) % 4 == 0 )
-        processed_letters << {b: letter}
+        processed_letters << {letter => @shifts[:b]}
       elsif count == 2 || ((count - 2) % 4 == 0 )
-        processed_letters << {c: letter}
+        processed_letters << {letter => @shifts[:c]}
       elsif count == 3 || ((count - 3) % 4 == 0 )
-        processed_letters << {d: letter}
+        processed_letters << {letter => @shifts[:d]}
       end
 
       count += 1
