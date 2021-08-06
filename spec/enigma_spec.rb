@@ -52,7 +52,11 @@ RSpec.describe Enigma do
       })
   end
 
+  it 'can read a file'  do
+    enigma = Enigma.new('/data/message.txt')
 
+
+  end
 
 
 
