@@ -1,5 +1,5 @@
 require 'simplecov'
-require 'lib/runner'
+require './lib/runner'
 
 SimpleCov.start
 RSpec.describe Runner do
@@ -16,12 +16,23 @@ RSpec.describe Runner do
     expect(runner2.date).to eq("040895")
   end
 
+  it 'can read files' do
+    runner1 = Runner.new('data/message.txt', 'data/encrypted.txt')
+    runner2 = Runner.new('data/encrypted.txt', 'data/decrypted', "02715", "040895")
 
+    expect(runner1.read_file).to eq('hello world')
+    expect(runner2.read_file).to eq('keder ohulw')
+
+  end
+
+  xit 'can encrypt' do
+    runner = Runner.new('data/message.txt', 'data/encrypted.txt')
+
+    expect(runner.encrypt("hello world").to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
+  end
 end
 
 
 
-
-#want it to take ARGV arguments, and optional ones for decryp
 #want it to spit out 'i have created file location' the key is key and the date is date
 #want it to write those text files
