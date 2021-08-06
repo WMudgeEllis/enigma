@@ -1,3 +1,5 @@
+require "./enigma"
+
 class Runner
   attr_reader :read_file_location, :write_file_location, :key, :date
 
@@ -9,5 +11,9 @@ class Runner
     @date = date
   end
 
+  def read_file
+    contents = File.open(read_file_location, 'r').read
+    contents[0..-2]
+  end
 
 end
