@@ -17,19 +17,25 @@ RSpec.describe Crypt do
   it 'attaches shift keys to letters' do
     crypt = Crypt.new("hello world", "02715", "040895")
 
-    expect(crypt.attach_shift_keys).to eq([
-      {a: 'h'},
-      {b: 'e'},
-      {c: 'l'},
-      {d: 'l'},
-      {a: 'o'},
-      {b: ' '},
-      {c: 'w'},
-      {d: 'o'},
-      {a: 'r'},
-      {b: 'l'},
-      {c: 'd'}
+    expect(crypt.attach_shift_nums).to eq([
+      {'h' => 3},
+      {'e' => 27},
+      {'l' => 73},
+      {'l' => 20},
+      {'o' => 3},
+      {' ' => 27},
+      {'w' => 73},
+      {'o' => 20},
+      {'r' => 3},
+      {'l' => 27},
+      {'d' => 73}
       ])
+  end
+
+  xit 'can encrypt' do
+    crypt = Crypt.new("hello world", "02715", "040895")
+
+     expect(crypt.encrypt).to eq("keder ohulw")
   end
 
 end
