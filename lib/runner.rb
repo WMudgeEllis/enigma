@@ -29,4 +29,11 @@ class Runner
 
     "Created #{write_file_location} with the key #{encrypt_info[:key]} and date #{encrypt_info[:date]}"
   end
+
+  def decrypt
+    decrypt_info = Enigma.new.decrypt(read_file, @key, @date)
+    write(decrypt_info[:decryption])
+    # require "pry"; binding.pry
+    "Created #{write_file_location} with the key #{decrypt_info[:key]} and date #{decrypt_info[:date]}"
+  end
 end
