@@ -1,5 +1,10 @@
+require './lib/runner'
+require "./lib/enigma"
+require "./lib/crypt"
+require "./lib/shift"
+require "./lib/character"
+require "date"
 
-enigma = Enigma.new
-File.open(ARGV[0], 'r').read
+File.open('data/message.txt', 'w') { |file| file.write('hello world') }
 
-enigma.encrypt(File.open(ARGV[0], 'r').read, "02715", "040895")
+puts Runner.new(ARGV[0], ARGV[1]).encrypt

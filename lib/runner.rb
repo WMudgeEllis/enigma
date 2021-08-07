@@ -1,4 +1,4 @@
-require "./enigma"
+require "./lib/enigma"
 
 class Runner
   attr_reader :read_file_location, :write_file_location, :key, :date
@@ -33,7 +33,7 @@ class Runner
   def decrypt
     decrypt_info = Enigma.new.decrypt(read_file, @key, @date)
     write(decrypt_info[:decryption])
-    # require "pry"; binding.pry
+
     "Created #{write_file_location} with the key #{decrypt_info[:key]} and date #{decrypt_info[:date]}"
   end
 end
