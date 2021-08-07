@@ -55,5 +55,4 @@ RSpec.describe Enigma do
 
 
 
-
 end
