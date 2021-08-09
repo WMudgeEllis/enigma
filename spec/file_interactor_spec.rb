@@ -1,12 +1,17 @@
 require 'simplecov'
 SimpleCov.start
-require './lib/fileinteractor'
+require './lib/file_interactor'
+require "./lib/enigma"
+require "./lib/crypt"
+require "./lib/shift"
+require "./lib/character"
+require "date"
 
 RSpec.describe FileInteractor do
 
   it 'can take an argument and spit them back' do
-    file_interactor1 = file_interactor.new('data/message.txt', 'data/encrypted.txt')
-    file_interactor2 = file_interactor.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
+    file_interactor1 = FileInteractor.new('data/message.txt', 'data/encrypted.txt')
+    file_interactor2 = FileInteractor.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
 
     expect(file_interactor1.read_file_location).to eq('data/message.txt')
     expect(file_interactor1.write_file_location).to eq('data/encrypted.txt')
@@ -17,7 +22,7 @@ RSpec.describe FileInteractor do
   end
 
   it 'can write files' do
-    file_interactor2 = file_interactor.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
+    file_interactor2 = FileInteractor.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
 
     file_interactor2.write('hello world')
 
