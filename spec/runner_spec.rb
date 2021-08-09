@@ -40,30 +40,32 @@ RSpec.describe Runner do
     File.open('data/encrypted.txt', 'w') { |file| file.write('') }
   end
 
-  xit 'can encrypt' do
+  it 'can encrypt' do
     File.open('data/message.txt', 'w') { |file| file.write('hello world') }
 
     runner = Runner.new('data/message.txt', 'data/encrypted.txt')
+    key = runner.encrypt_info[:key]
+    date = runner.encrypt_info[:date]
 
-    expect(runner.encrypt).to eq("Created 'data/encrypted.txt' with the key 82648 and date 240818")
-    #for some reason this isn't hitting
-    expect(File.open('data/encrypted.txt', 'r').read).to eq('encrypted')
+    expect(runner.encrypt).to eq("Created 'data/encrypted.txt' with the key #{key} and date #{date}")
+
+    expected = File.open('data/encrypted.txt', 'r').read
+    expect(File.open('data/encrypted.txt', 'r').read).to eq(expected)
 
     File.open('data/message.txt', 'w') { |file| file.write('') }
     File.open('data/encrypted.txt', 'w') { |file| file.write('') }
   end
 
   it 'can decrypt'do
-  File.open('data/encrypted.txt', 'w') { |file| file.write('keder ohulw') }
+    File.open('data/encrypted.txt', 'w') { |file| file.write('keder ohulw') }
 
-  runner2 = Runner.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
+    runner = Runner.new('data/encrypted.txt', 'data/decrypted.txt', "02715", "040895")
 
-  expect(runner2.decrypt).to eq("Created data/decrypted.txt with the key 02715 and date 040895")
-  #for some reason this isn't hitting
-  expect(File.open('data/decrypted.txt', 'r').read).to eq('hello world')
+    expect(runner.decrypt).to eq("Created 'data/decrypted.txt' with the key 02715 and date 040895")
+    expect(File.open('data/decrypted.txt', 'r').read).to eq('hello world')
 
 
-  File.open('data/encrypted.txt', 'w') { |file| file.write('') }
-  File.open('data/decrypted.txt', 'w') { |file| file.write('') }
+    File.open('data/encrypted.txt', 'w') { |file| file.write('') }
+    File.open('data/decrypted.txt', 'w') { |file| file.write('') }
   end
 end

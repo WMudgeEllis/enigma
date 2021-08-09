@@ -1,13 +1,20 @@
 require "./lib/enigma"
 
 class Runner
-  attr_reader :read_file_location, :write_file_location, :key, :date
+  attr_reader :read_file_location,
+              :write_file_location,
+              :key,
+              :date,
+              :encrypt_info,
+              :decrypt_info
 
   def initialize(read_file_location, write_file_location, key = nil, date = nil)
     @read_file_location = read_file_location
     @write_file_location = write_file_location
     @key = key
     @date = date
+    @encrypt_info = Enigma.new.encrypt(read_file)
+    @decrypt_info = Enigma.new.decrypt(read_file, @key, @date) if @key != nil
   end
 
   def read_file
@@ -23,16 +30,12 @@ class Runner
   end
 
   def encrypt
-    encrypt_info = Enigma.new.encrypt(read_file)
-    write(encrypt_info[:encryption])
-
-    "Created #{write_file_location} with the key #{encrypt_info[:key]} and date #{encrypt_info[:date]}"
+    write(@encrypt_info[:encryption])
+    "Created '#{write_file_location}' with the key #{@encrypt_info[:key]} and date #{@encrypt_info[:date]}"
   end
 
   def decrypt
-    decrypt_info = Enigma.new.decrypt(read_file, @key, @date)
-    write(decrypt_info[:decryption])
-
-    "Created #{write_file_location} with the key #{decrypt_info[:key]} and date #{decrypt_info[:date]}"
+    write(@decrypt_info[:decryption])
+    "Created '#{write_file_location}' with the key #{@decrypt_info[:key]} and date #{@decrypt_info[:date]}"
   end
 end
