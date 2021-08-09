@@ -1,7 +1,7 @@
 require 'simplecov'
+SimpleCov.start
 require './lib/runner'
 
-SimpleCov.start
 RSpec.describe Runner do
 
   it 'can take an argument and spit them back' do
@@ -45,7 +45,7 @@ RSpec.describe Runner do
 
     runner = Runner.new('data/message.txt', 'data/encrypted.txt')
 
-    expect(runner.encrypt).to eq("Created 'encrypted.txt' with the key 82648 and date 240818")
+    expect(runner.encrypt).to eq("Created 'data/encrypted.txt' with the key 82648 and date 240818")
     #for some reason this isn't hitting
     expect(File.open('data/encrypted.txt', 'r').read).to eq('encrypted')
 
@@ -65,12 +65,5 @@ RSpec.describe Runner do
 
   File.open('data/encrypted.txt', 'w') { |file| file.write('') }
   File.open('data/decrypted.txt', 'w') { |file| file.write('') }
-
-
   end
 end
-
-
-
-#want it to spit out 'i have created file location' the key is key and the date is date
-#want it to write those text files

@@ -18,11 +18,11 @@ class Crypt
 
       if count % 4 == 0
         processed_letters << [letter.downcase, @shifts[:a]]
-      elsif count == 1 || ((count - 1) % 4 == 0 )
+      elsif ((count - 1) % 4 == 0 )
         processed_letters << [letter.downcase, @shifts[:b]]
-      elsif count == 2 || ((count - 2) % 4 == 0 )
+      elsif ((count - 2) % 4 == 0 )
         processed_letters << [letter.downcase, @shifts[:c]]
-      elsif count == 3 || ((count - 3) % 4 == 0 )
+      elsif ((count - 3) % 4 == 0 )
         processed_letters << [letter.downcase, @shifts[:d]]
       end
 
@@ -42,23 +42,5 @@ class Crypt
       @character.decrypt(letter_shift_pair[0], letter_shift_pair[1])
     end.join
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end

@@ -1,8 +1,8 @@
 require "simplecov"
+SimpleCov.start
 require "./lib/enigma"
 require 'date'
 
-SimpleCov.start
 RSpec.describe Enigma do
 
   it 'can generate random numbers' do
@@ -15,7 +15,7 @@ RSpec.describe Enigma do
   it "can generate today's date" do
     enigma = Enigma.new
 
-    expect(enigma.date_generator).to eq("060821")
+    expect(enigma.date_generator).to eq("090821")
   end
 
   it 'can encrypt and decrypt' do
@@ -51,8 +51,4 @@ RSpec.describe Enigma do
       date: "040895"
       })
   end
-
-
-
-
 end
