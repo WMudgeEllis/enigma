@@ -5,4 +5,4 @@ require "./lib/shift"
 require "./lib/character"
 require "date"
 
-puts Runner.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3]).decrypt
+puts FileInteractor.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3]).decrypt

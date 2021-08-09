@@ -1,6 +1,6 @@
 require "./lib/enigma"
 
-class Runner
+class FileInteractor
   attr_reader :read_file_location,
               :write_file_location,
               :key,
