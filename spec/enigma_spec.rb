@@ -12,10 +12,11 @@ RSpec.describe Enigma do
     expect(enigma.random_generator).to be_a(String)
   end
 
-  it "can generate today's date" do
+  it "can generate date" do
     enigma = Enigma.new
+    allow(Date).to receive(:today).and_return(Date.new(1995, 8, 4))
 
-    expect(enigma.date_generator).to eq("090821")
+    expect(enigma.date_generator).to eq("040895")
   end
 
   it 'can encrypt and decrypt' do
