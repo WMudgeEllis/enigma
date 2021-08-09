@@ -1,7 +1,7 @@
 # enigma
 
 
-##Weston's self assessment
+## Weston's self assessment
 
 **Functionality:** strong meets expectation
 
@@ -13,7 +13,7 @@
 
 **Overall:** Pass
 
-###Reasoning/evidence
+### Reasoning/evidence
 
 **Functionality:**
 Not much to say here, both enigma methods work, and the commandline interface works.
