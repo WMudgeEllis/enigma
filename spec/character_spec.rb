@@ -1,7 +1,8 @@
 require "simplecov"
+SimpleCov.start
+
 require "./lib/character"
 
-SimpleCov.start
 RSpec.describe Character do
 
   it 'exists and has attributes' do
@@ -9,6 +10,12 @@ RSpec.describe Character do
 
     expect(character).to be_a(Character)
     expect(character.set.length).to eq(27)
+  end
+
+  it 'can rotate to index position' do
+    character = Character.new
+
+    expect(character.make_first('j').first).to eq('j')
   end
 
   it 'can encrypt' do
@@ -20,13 +27,6 @@ RSpec.describe Character do
     expect(character.encrypt('a', 35)).to eq('i')
     expect(character.encrypt(' ', 27)).to eq(' ')
     expect(character.encrypt('?', 23)).to eq('?')
-
-  end
-
-  it 'can rotate to index position' do
-    character = Character.new
-
-    expect(character.make_first('j').first).to eq('j')
   end
 
   it 'can decrypt' do

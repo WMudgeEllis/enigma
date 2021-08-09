@@ -22,5 +22,4 @@ class Enigma
     Date.today.strftime("%d%m%y")
   end
 
-
 end

@@ -1,7 +1,8 @@
 require "simplecov"
+SimpleCov.start
+
 require "./lib/shift"
 
-SimpleCov.start
 RSpec.describe Shift do
 
   it 'exists and has attributes' do
